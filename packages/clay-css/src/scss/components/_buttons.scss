@@ -131,6 +131,8 @@
 .btn-link {
 	@include border-radius(1px);
 
+	color: var(--link-color);
+
 	&:focus {
 		box-shadow: $btn-focus-box-shadow;
 		text-decoration: $link-decoration;
