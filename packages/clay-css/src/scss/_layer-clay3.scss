@@ -1,0 +1,64 @@
+.btn {
+	--btn-border-radius: #{$btn-border-radius};
+	--btn-border-width: #{$btn-border-width};
+	--btn-cursor: #{$btn-cursor};
+	--btn-color: #{$body-color};
+	--btn-font-family: #{$btn-font-family};
+	--btn-font-size: #{$btn-font-size};
+	--btn-font-weight: #{$btn-font-weight};
+	--btn-padding-y: #{$btn-padding-y};
+	--btn-padding-x: #{$btn-padding-x};
+
+	&.focus,
+	&:focus {
+		--btn-box-shadow: #{$btn-focus-box-shadow};
+	}
+
+	&.disabled,
+	&:disabled {
+		--btn-cursor: #{$btn-disabled-cursor};
+		--btn-opacity: #{$btn-disabled-opacity};
+	}
+
+	.btn-section {
+		--btn-section-font-size: #{$btn-section-font-size};
+	}
+
+	@at-root :where(fieldset:disabled a#{&}) {
+		--btn-opacity: #{$btn-disabled-opacity};
+	}
+}
+
+.btn-lg {
+	--btn-font-size: #{$btn-font-size-lg};
+	--btn-line-height: #{$btn-line-height-lg};
+	--btn-padding-y: #{$btn-padding-y-lg};
+	--btn-padding-x: #{$btn-padding-x-lg};
+
+	.btn-section {
+		--btn-section-font-size: #{$btn-section-font-size-lg};
+	}
+}
+
+.btn-sm {
+	--btn-font-size: #{$btn-font-size-sm};
+	--btn-line-height: #{$btn-line-height-sm};
+	--btn-padding-y: #{$btn-padding-y-sm};
+	--btn-padding-x: #{$btn-padding-x-sm};
+
+	.btn-section {
+		--btn-section-font-size: #{$btn-section-font-size-sm};
+	}
+}
+
+.btn-monospaced {
+	--btn-monospaced-size: #{$btn-monospaced-size};
+
+	&.btn-lg {
+		--btn-monospaced-size: #{$btn-monospaced-size-lg};
+	}
+
+	&.btn-sm {
+		--btn-monospaced-size: #{$btn-monospaced-size-sm};
+	}
+}

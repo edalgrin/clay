@@ -1,0 +1,28 @@
+.btn {
+	--btn-border-radius: var(--border-radius);
+	--btn-border-width: var(--input-btn-border-width);
+	--btn-cursor: var(--link-cursor);
+	--btn-line-height: var(--input-line-height);
+
+	&.focus,
+	&:focus {
+		--btn-box-shadow: var(--component-focus-box-shadow);
+	}
+
+	&.disabled,
+	&:disabled {
+		--btn-cursor: var(--disabled-cursor);
+	}
+
+	@at-root :where(fieldset:disabled a#{&}) {
+		--btn-cursor: var(--disabled-cursor);
+	}
+}
+
+.btn-lg {
+	--btn-font-size: var(--font-size-lg);
+}
+
+.btn-sm {
+	--btn-font-size: var(--font-size-sm);
+}
