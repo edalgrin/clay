@@ -1,0 +1,67 @@
+@import 'functions/_global-functions';
+@import 'atlas/_variables';
+@import '_variables';
+@import '_mixins';
+
+[class*='-n'] {
+	--spacer-sign: -1;
+}
+
+[class*='-auto'] {
+	--spacer: var(--spacer-breakpoint, auto);
+}
+
+@each $size, $length in $spacers {
+	[class*='#{$size}'] {
+		--spacer-size: calc(#{$length} * var(--spacer-sign, 1));
+		--spacer: var(--spacer-breakpoint, var(--spacer-size));
+	}
+}
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+	[class*='#{$abbrev}-'] {
+		#{$prop}: var(--spacer) !important;
+	}
+
+	[class*='#{$abbrev}t-'],
+	[class*='#{$abbrev}y-'] {
+		#{$prop}-top: var(--spacer) !important;
+	}
+
+	[class*='#{$abbrev}r-'],
+	[class*='#{$abbrev}x-'] {
+		#{$prop}-right: var(--spacer) !important;
+	}
+
+	[class*='#{$abbrev}b-'],
+	[class*='#{$abbrev}y-'] {
+		#{$prop}-bottom: var(--spacer) !important;
+	}
+
+	[class*='#{$abbrev}l-'],
+	[class*='#{$abbrev}x-'] {
+		#{$prop}-left: var(--spacer) !important;
+	}
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	[class*='#{$breakpoint}'] {
+		--spacer-breakpoint: 'initial';
+	}
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		@if $infix != '' {
+			[class*='#{$infix}'] {
+				--spacer-breakpoint: var(--spacer-size);
+			}
+
+			[class*='#{$infix}-auto'] {
+				--spacer-breakpoint: auto;
+			}
+		}
+	}
+}
